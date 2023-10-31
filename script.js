@@ -3,8 +3,7 @@ const exportButton = document.querySelector('.export_btn');
 const ROWS = 10;
 const COLUMNS = 10;
 const spreadsheet = [];
-const alphabets = [
-    "A", "B", "C", "D", "E", "F", "G",
+const alphabets = [" ","A", "B", "C", "D", "E", "F", "G",
     "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
     "S", "T", "U", "V", "W", "X", "Y", "Z"
 ];
@@ -57,7 +56,7 @@ function initSpreadsheet() {
                 cellData = i;
             }
             if (i === 0) {
-                cellData = alphabets[j - 1];
+                cellData = alphabets[j];
                 isHeader = true;
                 disabled = true;
             }
@@ -86,16 +85,16 @@ function createCellEle(cell){
     if(cell.isHeader){
     cellEle.classList.add('header');
     }
-    cellEle.onclick = () => handleCellClick(cell);
-    cellEle.onchange = (e) => handleOnChange(e.target.value, cell);
+    cellEle.onclick = () => handleClickedCell(cell);
+    cellEle.onchange = (e) => keepCellValue(e.target.value, cell);
     return cellEle;
 }
 
-function handleOnChange(data, cell){
+function keepCellValue(data, cell){
     cell.data = data;
 }
 
-function handleCellClick(cell){
+function handleClickedCell(cell){
     clearHeaderActiveStates();
     const columnHeader = spreadsheet[0][cell.column];
     const rowHeader = spreadsheet[cell.row][0];
