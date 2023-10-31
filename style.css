@@ -1,6 +1,6 @@
 .head_container{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin-bottom: 10px;
     margin-top: 10px;
